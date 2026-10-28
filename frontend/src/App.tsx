@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState, createContext, useContext } from "react";
 import Landing from "./pages/Landing.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import Editor from "./pages/Editor.jsx";
 import { authApi, User } from "./api/authApi";
 
 export const AuthContext = createContext<User | null>(null);
@@ -58,6 +59,14 @@ export default function App() {
             <Dashboard />
           </ProtectedRoute>
         } 
+      />
+      <Route
+        path="/editor"
+        element={
+          <ProtectedRoute>
+            <Editor />
+          </ProtectedRoute>
+        }
       />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

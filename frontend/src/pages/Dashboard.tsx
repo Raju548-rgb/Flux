@@ -20,12 +20,20 @@ export default function Dashboard() {
             <h1 className="text-2xl font-bold text-white">Welcome, {user?.username}!</h1>
             <p className="text-white/60 text-sm">Authenticated successfully via GitHub.</p>
           </div>
-          <button 
-            onClick={handleLogout}
-            className="ml-auto px-4 py-2 bg-red-500/10 text-red-500 hover:bg-red-500/20 rounded-md transition-colors font-medium text-sm"
-          >
-            Logout
-          </button>
+          <div className="ml-auto flex gap-4">
+            <button
+              onClick={() => navigate('/editor')}
+              className="px-4 py-2 bg-accent text-white hover:bg-accent/80 rounded-md transition-colors font-medium text-sm"
+            >
+              Open Editor
+            </button>
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 bg-red-500/10 text-red-500 hover:bg-red-500/20 rounded-md transition-colors font-medium text-sm"
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </div>
