@@ -9,7 +9,7 @@ export default function Landing() {
   useEffect(() => {
     if (errorMsg) {
       // Clear it from URL after brief delay if you want, but for now just show it
-      console.error("Auth Error:", errorMsg);
+      console.error('Auth Error:', errorMsg);
     }
   }, [errorMsg]);
 
@@ -18,8 +18,15 @@ export default function Landing() {
       {errorMsg && (
         <div className="absolute top-20 left-1/2 -translate-x-1/2 z-50 bg-red-500/90 text-white px-6 py-3 rounded-lg shadow-xl backdrop-blur-md flex items-center gap-3 border border-red-400">
           <AlertTriangle size={20} />
-          <span className="font-semibold">Authentication failed: {errorMsg}</span>
-          <button onClick={() => setSearchParams({})} className="ml-4 hover:opacity-70 transition-opacity font-bold">×</button>
+          <span className="font-semibold">
+            Authentication failed: {errorMsg}
+          </span>
+          <button
+            onClick={() => setSearchParams({})}
+            className="ml-4 hover:opacity-70 transition-opacity font-bold"
+          >
+            ×
+          </button>
         </div>
       )}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accentSoft/30 via-base to-base -z-10 pointer-events-none" />
@@ -34,13 +41,13 @@ export default function Landing() {
           { h: '50%', c: 'from-purple-800', d: '-6s', dur: '10s' },
         ].map((pillar, i) => (
           <div key={i} className="flex-1 h-full relative flex items-end">
-            <div 
+            <div
               className={`w-full bg-gradient-to-t ${pillar.c} via-purple-900/40 to-transparent blur-[40px] sm:blur-[60px] animate-aurora`}
-              style={{ 
-                height: pillar.h, 
-                animationDelay: pillar.d, 
-                animationDuration: pillar.dur 
-              }} 
+              style={{
+                height: pillar.h,
+                animationDelay: pillar.d,
+                animationDuration: pillar.dur,
+              }}
             />
           </div>
         ))}
@@ -52,7 +59,9 @@ export default function Landing() {
         </div>
         <div className="flex items-center gap-4 sm:gap-5">
           <button
-            onClick={() => window.location.href = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'}/auth/github`}
+            onClick={() =>
+              (window.location.href = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'}/auth/github`)
+            }
             className="flex items-center gap-2 px-5 py-2 rounded-md bg-[#24292F] hover:bg-[#24292F]/90 text-white text-sm font-semibold transition-colors shadow-lg shadow-black/20"
           >
             <Github className="w-4 h-4" />
@@ -60,7 +69,10 @@ export default function Landing() {
           </button>
         </div>
       </nav>
-      <div id="scroll-container" className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth">
+      <div
+        id="scroll-container"
+        className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth"
+      >
         <section className="min-h-[150vh] sm:min-h-[180vh] relative">
           <div className="sticky top-0 h-[calc(100vh-72px)] w-full flex flex-col items-center justify-start pt-16 sm:pt-24 px-4 text-center">
             <div className="z-20 flex flex-col items-center max-w-4xl relative">
@@ -68,23 +80,24 @@ export default function Landing() {
                 Code together, build faster.
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mb-10 font-medium">
-                The ultimate minimalist, collaborative code editor for teams. 
+                The ultimate minimalist, collaborative code editor for teams.
                 Real-time editing, debugging, and AI-powered coding.
               </p>
-              
+
               <div className="flex items-center gap-2 bg-white/5 border border-white/10 p-1.5 rounded-full backdrop-blur-md mb-16 shadow-2xl">
                 <button
-                  onClick={() => window.location.href = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'}/auth/github`}
+                  onClick={() =>
+                    (window.location.href = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'}/auth/github`)
+                  }
                   className="px-6 py-2.5 sm:px-8 sm:py-3 rounded-full bg-white text-black font-semibold text-sm sm:text-base hover:bg-white/90 transition-colors flex items-center gap-2"
                 >
                   <Bot size={18} />
                   git commit -m "with love"
                 </button>
-
               </div>
             </div>
           </div>
-          
+
           <div className="absolute top-[80vh] sm:top-[85vh] left-0 w-full z-30 pb-32">
             <LazyVideo />
           </div>
@@ -151,13 +164,13 @@ function LazyVideo() {
     };
 
     scrollEl.addEventListener('scroll', handleScroll);
-    handleScroll(); 
+    handleScroll();
     return () => scrollEl.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div 
-      ref={containerRef} 
+    <div
+      ref={containerRef}
       className="w-full flex justify-center max-w-5xl mx-auto px-4 z-10 relative will-change-transform"
       style={{ transform: `scale(${scale})` }}
     >

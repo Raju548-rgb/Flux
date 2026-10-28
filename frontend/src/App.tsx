@@ -1,9 +1,9 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useEffect, useState, createContext, useContext } from "react";
-import Landing from "./pages/Landing.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
-import Editor from "./pages/Editor.jsx";
-import { authApi, User } from "./api/authApi";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect, useState, createContext, useContext } from 'react';
+import Landing from './pages/Landing.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import Editor from './pages/Editor.jsx';
+import { authApi, User } from './api/authApi';
 
 export const AuthContext = createContext<User | null>(null);
 export const useAuth = () => useContext(AuthContext);
@@ -15,7 +15,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let isMounted = true;
-    authApi.getMe()
+    authApi
+      .getMe()
       .then((data) => {
         if (isMounted) {
           setUser(data);
@@ -28,7 +29,9 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
           setLoading(false);
         }
       });
-    return () => { isMounted = false; };
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   if (loading) {
@@ -40,9 +43,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   return user ? (
-    <AuthContext.Provider value={user}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
   ) : (
     <Navigate to="/?error=Unauthorized" replace />
   );
@@ -52,13 +53,13 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route 
-        path="/dashboard" 
+      <Route
+        path="/dashboard"
         element={
           <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>
-        } 
+        }
       />
       <Route
         path="/editor"

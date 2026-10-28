@@ -6,7 +6,7 @@ const axiosClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true // Crucial: automatically sends and receives cookies
+  withCredentials: true, // Crucial: automatically sends and receives cookies
 });
 
 let isRefreshing = false;
@@ -59,9 +59,9 @@ axiosClient.interceptors.response.use(
         await axios.post(
           `${axiosClient.defaults.baseURL}/api/auth/refresh`,
           {},
-          { 
+          {
             headers: { 'Content-Type': 'application/json' },
-            withCredentials: true 
+            withCredentials: true,
           }
         );
 

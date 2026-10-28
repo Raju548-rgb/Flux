@@ -15,10 +15,18 @@ export default function Dashboard() {
     <div className="min-h-screen bg-base text-text p-8 font-sans">
       <div className="max-w-4xl mx-auto flex flex-col gap-8">
         <div className="flex items-center gap-4 bg-panel p-6 rounded-xl border border-border shadow-2xl">
-          <img src={user?.avatarUrl} alt="Avatar" className="w-16 h-16 rounded-full border-2 border-accent" />
+          <img
+            src={user?.avatarUrl}
+            alt="Avatar"
+            className="w-16 h-16 rounded-full border-2 border-accent"
+          />
           <div>
-            <h1 className="text-2xl font-bold text-white">Welcome, {user?.username}!</h1>
-            <p className="text-white/60 text-sm">Authenticated successfully via GitHub.</p>
+            <h1 className="text-2xl font-bold text-white">
+              Welcome, {user?.username}!
+            </h1>
+            <p className="text-white/60 text-sm">
+              Authenticated successfully via GitHub.
+            </p>
           </div>
           <div className="ml-auto flex gap-4">
             <button

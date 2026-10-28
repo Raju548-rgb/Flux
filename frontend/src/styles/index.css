@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
 }
@@ -18,7 +20,9 @@ html, body, #root {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -38,9 +42,15 @@ html, body, #root {
 }
 
 @keyframes aurora {
-  0% { transform: translateY(10%) scaleY(1); }
-  50% { transform: translateY(-40%) scaleY(1.2); }
-  100% { transform: translateY(10%) scaleY(1); }
+  0% {
+    transform: translateY(10%) scaleY(1);
+  }
+  50% {
+    transform: translateY(-40%) scaleY(1.2);
+  }
+  100% {
+    transform: translateY(10%) scaleY(1);
+  }
 }
 
 .animate-aurora {
